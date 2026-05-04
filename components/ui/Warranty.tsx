@@ -25,7 +25,7 @@ export function Warranty() {
         alt="Сервис и гарантия"
         width={375}
         height={312}
-        className="mt-4 md:hidden"
+        className="m-4 md:hidden"
       />
       <div className="flex w-full justify-end max-w-6xl">
         <div className="p-5 flex flex-col gap-2 xl:gap-4 xl:max-w-xl">
