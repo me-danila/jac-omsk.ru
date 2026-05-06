@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Contacts } from "@/components/ui/Contacts";
 import { Feedback } from "@/components/ui/Feedback";
 import Footer from "@/components/ui/Footer";
@@ -11,7 +12,9 @@ export default function Home() {
     <main className="flex flex-col xl:gap-4">
       <Header />
       <FramerCarousel />
-      <JacModelsSlider />
+      <Suspense fallback={null}>
+        <JacModelsSlider />
+      </Suspense>
       <Warranty />
       <Feedback />
       <Contacts />
