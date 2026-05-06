@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 interface ModelFeature {
@@ -140,6 +141,7 @@ function PayloadIcon() {
       viewBox="0 0 24 24"
       stroke="currentColor"
       className="w-5 h-5"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
@@ -285,10 +287,12 @@ function TruckSlider({
       <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-100 to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-100 to-transparent z-10 pointer-events-none" />
 
-      <div
+      <section
         ref={containerRef}
         className="flex overflow-hidden cursor-grab active:cursor-grabbing gap-4"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        aria-label="Слайдер моделей JAC"
+        aria-roledescription="carousel"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -320,12 +324,14 @@ function TruckSlider({
                 transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
             >
-              <div className="relative w-full aspect-[4/3] flex items-center justify-center">
+              <div className="flex w-full items-center justify-center">
                 <Image
                   src={model.image}
                   alt={model.title}
-                  fill
-                  className="object-contain drop-shadow-2xl"
+                  width={1200}
+                  height={900}
+                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 80vw, 75vw"
+                  className="h-auto w-full object-contain drop-shadow-2xl"
                   draggable={false}
                   priority={index === activeIndex}
                 />
@@ -333,7 +339,7 @@ function TruckSlider({
             </div>
           );
         })}
-      </div>
+      </section>
 
       <div className="flex justify-center gap-2 mt-2 lg:hidden bg-white/50 max-w-fit p-2 rounded-full border mx-auto">
         {models.map((model, index) => (
@@ -354,6 +360,7 @@ function TruckSlider({
 
 /* ---------- Main Component ---------- */
 export default function JacModelsSlider() {
+  const searchParams = useSearchParams();
   const [activeIndex, setActiveIndex] = useState(1);
   const activeModel = models[activeIndex];
 
@@ -361,8 +368,21 @@ export default function JacModelsSlider() {
     setActiveIndex(index);
   }, []);
 
+  useEffect(() => {
+    const modelId = searchParams.get("model");
+    if (!modelId) return;
+
+    const nextIndex = models.findIndex((model) => model.id === modelId);
+    if (nextIndex >= 0) {
+      setActiveIndex(nextIndex);
+    }
+  }, [searchParams]);
+
   return (
-    <section className="max-xl:bg-gray-100 flex flex-col gap-4 w-full py-12 px-4 sm:px-6 lg:px-8">
+    <section
+      className="max-xl:bg-gray-100 flex flex-col gap-4 w-full py-12 px-4 sm:px-6 lg:px-8 scroll-mt-16"
+      id="models"
+    >
       <h2 className="text-2xl font-semibold lg:text-5xl/13 text-center text-gray-900 lg:max-w-5xl lg:mx-auto">
         <span className="text-red-600">М-Тракс</span> - официальный дилер
         коммерческого транспорта JAC

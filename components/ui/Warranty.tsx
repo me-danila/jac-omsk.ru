@@ -19,13 +19,16 @@ const warrantyItems: WarrantyItem[] = [
 
 export function Warranty() {
   return (
-    <section className="flex flex-col md:flex-row justify-center xl:bg-[url('/assets/img/jac-motors.webp')] xl:bg-contain xl:bg-no-repeat xl:bg-left xl:py-4">
+    <section
+      className="flex flex-col md:flex-row justify-center xl:bg-[url('/assets/img/jac-motors.webp')] xl:bg-contain xl:bg-no-repeat xl:bg-left xl:py-4 scroll-mt-12"
+      id="service"
+    >
       <Image
         src="/assets/img/service-mob.webp"
         alt="Сервис и гарантия"
         width={375}
         height={312}
-        className="m-4 md:hidden"
+        className="m-4 h-auto w-auto md:hidden"
       />
       <div className="flex w-full justify-end max-w-6xl">
         <div className="p-5 flex flex-col gap-2 xl:gap-4 xl:max-w-xl">

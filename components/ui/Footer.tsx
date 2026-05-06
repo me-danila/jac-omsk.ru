@@ -47,6 +47,7 @@ export default function Footer() {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -86,6 +87,7 @@ export default function Footer() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
+                aria-hidden="true"
               >
                 <path
                   d="M0 7.68c0-3.62 0-5.431 1.125-6.555C2.249 0 4.06 0 7.68 0h.64c3.62 0 5.431 0 6.555 1.125C16 2.249 16 4.06 16 7.68v.64c0 3.62 0 5.431-1.125 6.555C13.751 16 11.94 16 8.32 16h-.64c-3.62 0-5.431 0-6.555-1.125C0 13.751 0 11.94 0 8.32z"

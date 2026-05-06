@@ -1,51 +1,57 @@
 "use client";
 import { animate, motion, useMotionValue } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export const items = [
   {
     id: 1,
-    url: "/assets/img/banner1.webp",
+    urlMobile: "/assets/img/banners/mobile/banner1.webp",
+    urlDesktop: "/assets/img/banners/banner1.webp",
     title: "Весна — время больших возможностей",
-    href: "#",
+    href: "/#feedback",
   },
   {
     id: 2,
-    url: "/assets/img/banner2.webp",
+    urlMobile: "/assets/img/banners/mobile/banner2.webp",
+    urlDesktop: "/assets/img/banners/banner2.webp",
     title: "JAС Финанс 3.0",
-    href: "#",
+    href: "/#feedback",
   },
   {
     id: 3,
-    url: "/assets/img/banner3.webp",
+    urlMobile: "/assets/img/banners/mobile/banner3.webp",
+    urlDesktop: "/assets/img/banners/banner3.webp",
     title: "JAC K7",
-    href: "#",
+    href: "/?model=k7#models",
   },
   {
     id: 4,
-    url: "/assets/img/banner4.webp",
+    urlMobile: "/assets/img/banners/mobile/banner4.webp",
+    urlDesktop: "/assets/img/banners/banner4.webp",
     title: "JAC N200X",
-    href: "#",
+    href: "/?model=n200#models",
   },
   {
     id: 5,
-    url: "/assets/img/banner5.webp",
+    urlMobile: "/assets/img/banners/mobile/banner5.webp",
+    urlDesktop: "/assets/img/banners/banner5.webp",
     title: "JAC N120X",
-    href: "#",
+    href: "/?model=n120x#models",
   },
   {
     id: 6,
-    url: "/assets/img/banner6.webp",
+    urlMobile: "/assets/img/banners/mobile/banner6.webp",
+    urlDesktop: "/assets/img/banners/banner6.webp",
     title: "JAC N90X",
-    href: "#",
+    href: "/?model=n90x#models",
   },
   {
     id: 7,
-    url: "/assets/img/banner7.webp",
+    urlMobile: "/assets/img/banners/mobile/banner7.webp",
+    urlDesktop: "/assets/img/banners/banner7.webp",
     title: "JAC N90",
-    href: "#",
+    href: "/?model=n90#models",
   },
 ];
 
@@ -77,16 +83,21 @@ export function FramerCarousel() {
               <Link
                 key={item.id}
                 href={item.href}
-                className="shrink-0 w-full relative aspect-[2.25/1]"
+                className="shrink-0 w-full relative aspect-4/6 lg:aspect-[2.25/1]"
               >
-                <Image
-                  src={item.url}
-                  alt={item.title}
-                  fill
-                  priority={item.id === 1}
-                  className="object-cover select-none pointer-events-none"
-                  draggable={false}
-                />
+                <picture>
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet={item.urlDesktop}
+                  />
+                  <img
+                    src={item.urlMobile}
+                    alt={item.title}
+                    className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
+                    draggable={false}
+                    fetchPriority={item.id === 1 ? "high" : "auto"}
+                  />
+                </picture>
               </Link>
             ))}
           </motion.div>

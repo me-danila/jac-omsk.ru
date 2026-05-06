@@ -2,7 +2,10 @@ import Link from "next/link";
 
 export function Contacts() {
   return (
-    <section className="flex flex-col gap-4 my-8 xl:gap-8">
+    <section
+      className="flex flex-col gap-4 my-8 xl:gap-8 scroll-mt-20"
+      id="contacts"
+    >
       <h2 className="text-3xl lg:text-5xl text-center text-gray-900 lg:max-w-5xl lg:mx-auto font-semibold">
         Контакты
       </h2>
