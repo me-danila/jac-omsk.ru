@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 interface WarrantyItem {
   id: string;
@@ -20,17 +20,26 @@ const warrantyItems: WarrantyItem[] = [
 export function Warranty() {
   return (
     <section
-      className="flex flex-col md:flex-row justify-center xl:bg-[url('/assets/img/jac-motors.webp')] xl:bg-contain xl:bg-no-repeat xl:bg-left xl:py-4 scroll-mt-12"
+      className="relative flex flex-col justify-center overflow-hidden md:flex-row xl:py-4 scroll-mt-12"
       id="service"
     >
-      <Image
+      <div className="pointer-events-none absolute inset-0 hidden xl:block">
+        <OptimizedImage
+          src="/assets/img/jac-motors.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-contain object-left"
+        />
+      </div>
+      <OptimizedImage
         src="/assets/img/service-mob.webp"
         alt="Сервис и гарантия"
         width={375}
         height={312}
         className="m-4 h-auto w-auto md:hidden"
       />
-      <div className="flex w-full justify-end max-w-6xl">
+      <div className="relative flex w-full max-w-6xl justify-end">
         <div className="p-5 flex flex-col gap-2 xl:gap-4 xl:max-w-xl">
           <h3 className="text-3xl text-center md:text-start mb-3 xl:text-4xl font-semibold">
             Сервис и&nbsp;гарантия

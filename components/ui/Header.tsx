@@ -1,9 +1,10 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { type MouseEvent, useEffect, useRef, useState } from "react";
+
+import OptimizedImage from "./OptimizedImage";
 
 const menuItems = [
   { label: "Модельный ряд", href: "/#models" },
@@ -96,7 +97,7 @@ export default function Header() {
               className="shrink-0 transition-opacity hover:opacity-95"
               aria-label="Перейти на главную"
             >
-              <Image
+              <OptimizedImage
                 src="/assets/img/logos/logo-jac.svg"
                 width={59}
                 height={30}
@@ -109,7 +110,7 @@ export default function Header() {
               className="shrink-0 transition-opacity hover:opacity-95"
               aria-label="Перейти на главную"
             >
-              <Image
+              <OptimizedImage
                 src="/assets/img/logos/logo-m-trucks.svg"
                 width={176}
                 height={30}

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -64,8 +64,12 @@ export default function Footer() {
             <p className="text-sm font-medium text-gray-400 uppercase">
               Ответим на ваши вопросы:
             </p>
-            <Link href="#" target="_blank" className="flex gap-2 items-center">
-              <Image
+            <Link
+              href="https://max.ru/u/f9LHodD0cOLVvrHRN21daT4tcEO6H3HG0zbDgjjHrCtxvdCHi6P8UisA_zU"
+              target="_blank"
+              className="flex gap-2 items-center"
+            >
+              <OptimizedImage
                 src="/assets/img/icons/icon-max.png"
                 width={16}
                 height={16}
@@ -109,7 +113,7 @@ export default function Footer() {
           <p>© {currentYear} ООО «М-Тракс» ИНН 5528201508 ОГРН 1085543023433</p>
 
           {/* Privacy Policy */}
-          <Link href="https://jac-omsk.ru/politic" className="border-b">
+          <Link href="/#politic" className="border-b">
             Политика конфиденциальности
           </Link>
         </div>

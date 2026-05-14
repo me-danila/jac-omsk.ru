@@ -2,6 +2,7 @@
 import { animate, motion, useMotionValue } from "motion/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 export const items = [
   {
@@ -85,19 +86,24 @@ export function FramerCarousel() {
                 href={item.href}
                 className="shrink-0 w-full relative aspect-4/6 lg:aspect-[2.25/1]"
               >
-                <picture>
-                  <source
-                    media="(min-width: 1024px)"
-                    srcSet={item.urlDesktop}
-                  />
-                  <img
-                    src={item.urlMobile}
-                    alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none"
-                    draggable={false}
-                    fetchPriority={item.id === 1 ? "high" : "auto"}
-                  />
-                </picture>
+                <OptimizedImage
+                  src={item.urlMobile}
+                  alt={item.title}
+                  fill
+                  sizes="100vw"
+                  className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none lg:hidden"
+                  draggable={false}
+                  priority={item.id === 1}
+                />
+                <OptimizedImage
+                  src={item.urlDesktop}
+                  alt={item.title}
+                  fill
+                  sizes="100vw"
+                  className="absolute inset-0 hidden h-full w-full object-cover select-none pointer-events-none lg:block"
+                  draggable={false}
+                  priority={item.id === 1}
+                />
               </Link>
             ))}
           </motion.div>

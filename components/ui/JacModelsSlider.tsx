@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import OptimizedImage from "@/components/ui/OptimizedImage";
 
 interface ModelFeature {
   icon: React.ReactNode;
@@ -325,7 +325,7 @@ function TruckSlider({
               }}
             >
               <div className="flex w-full items-center justify-center">
-                <Image
+                <OptimizedImage
                   src={model.image}
                   alt={model.title}
                   width={1200}
