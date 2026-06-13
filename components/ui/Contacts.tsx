@@ -43,11 +43,11 @@ export function Contacts() {
                   Телефон:
                 </p>
                 <Link
-                  href="tel:+73812992871"
+                  href="tel:+73812356401"
                   target="_blank"
                   className="text-sm lg:text-base border-b"
                 >
-                  +7 (3812) 99-28-71
+                  +7 (3812) 35-64-01
                 </Link>
               </div>
             </div>

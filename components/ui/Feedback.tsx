@@ -1,71 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { type ChangeEvent, type FormEvent, useState } from "react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
 export function Feedback() {
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    year: "",
-    mileage: "",
-    model: "",
-  });
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    const { id, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    try {
-      const res = await fetch("https://example.com/api/feedback", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Form-Secret": "cc4d848a1a202d50d74966102e3657db",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          phone: form.phone,
-          year: form.year,
-          mileage: form.mileage,
-          model: form.model,
-        }),
-      });
-
-      const json = await res.json();
-
-      if (json.ok) {
-        setStatus("success");
-        setForm({
-          name: "",
-          phone: "",
-          year: "",
-          mileage: "",
-          model: "",
-        });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  };
-
   return (
     <section
       className="relative flex flex-col items-center justify-center overflow-hidden p-2 xl:mt-8 xl:px-4 xl:py-6 scroll-mt-16"
@@ -80,12 +17,19 @@ export function Feedback() {
           className="object-contain object-right"
         />
       </div>
-      <div className="grid md:grid-cols-2 md:gap-10 lg:gap-20 max-w-7xl w-full items-center">
+      <div className="grid md:grid-cols-2 md:gap-10 lg:gap-20 max-w-[85rem] w-full items-center">
         <div className="relative p-5 flex flex-col gap-2 xl:gap-4">
           <h3 className="text-3xl text-center md:text-start mb-3 xl:text-4xl font-semibold">
             Нужна помощь или&nbsp;консультация?
           </h3>
-          <script src="https://forms.yandex.ru/_static/embed.js"></script><iframe  src="https://forms.yandex.ru/u/6a0ab2aef47e738cd8258982?iframe=1" frameBorder="0" name="ya-form-6a0ab2aef47e738cd8258982" width="100%"></iframe>
+          <script src="https://forms.yandex.ru/_static/embed.js"></script>
+          <iframe
+            src="https://forms.yandex.ru/u/6a0ab2aef47e738cd8258982?iframe=1"
+            title="Форма обратной связи"
+            frameBorder="0"
+            name="ya-form-6a0ab2aef47e738cd8258982"
+            width="100%"
+          ></iframe>
           {/*<form onSubmit={handleSubmit}>*/}
           {/*  <div className="grid xl:grid-cols-2 gap-4 mb-5">*/}
           {/*    <div>*/}

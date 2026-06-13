@@ -90,7 +90,7 @@ export default function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-black/5 bg-white/70 backdrop-blur-md xl:-mb-4">
-        <div className="flex items-center justify-between gap-4 p-2 lg:py-3 xl:max-w-7xl xl:mx-auto">
+        <div className="flex items-center justify-between gap-4 p-2 lg:py-3 xl:px-8 xl:mx-auto">
           <div className="flex items-center gap-5 lg:gap-8">
             <Link
               href="/"
@@ -162,26 +162,28 @@ export default function Header() {
             isScrolled ? "max-h-0 opacity-0" : "max-h-48 opacity-100"
           }`}
         >
-          <div className="flex px-4 py-2 lg:py-3 text-xs lg:text-sm text-gray-600 items-center gap-12 xl:max-w-7xl xl:mx-auto xl:justify-between xl:px-2">
-            <div className="flex flex-col gap-1 xl:flex-row xl:gap-2">
-              <p className="font-semibold">{serviceDetails.title}:</p>
-              <Link
-                href={serviceDetails.href}
-                target="_blank"
-                className="border-b max-w-fit"
-              >
-                {serviceDetails.phone}
-              </Link>
-            </div>
-            <div className="flex flex-col gap-1 xl:flex-row xl:gap-2">
-              <p className="font-semibold">{salesDetails.title}:</p>
-              <Link
-                href={salesDetails.href}
-                target="_blank"
-                className="border-b max-w-fit"
-              >
-                {salesDetails.phone}
-              </Link>
+          <div className="flex px-4 py-2 lg:py-3 text-xs lg:text-sm text-gray-600 items-center gap-12 xl:px-8 xl:mx-auto xl:justify-between xl:px-2">
+            <div className="flex gap-2 xl:gap-4">
+              <div className="flex flex-col gap-1 xl:flex-row xl:gap-2">
+                <p className="font-semibold">{serviceDetails.title}:</p>
+                <Link
+                  href={serviceDetails.href}
+                  target="_blank"
+                  className="border-b max-w-fit"
+                >
+                  {serviceDetails.phone}
+                </Link>
+              </div>
+              <div className="flex flex-col gap-1 xl:flex-row xl:gap-2">
+                <p className="font-semibold">{salesDetails.title}:</p>
+                <Link
+                  href={salesDetails.href}
+                  target="_blank"
+                  className="border-b max-w-fit"
+                >
+                  {salesDetails.phone}
+                </Link>
+              </div>
             </div>
             <div className="flex-col gap-1 xl:flex-row xl:gap-2 hidden xl:flex">
               <p className="font-semibold">{locationDetails.title}:</p>
