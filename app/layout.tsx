@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import localFont from "next/font/local";
+import Script from "next/script";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "М-Тракс - официальный дилер коммерческого транспорта JAC",
@@ -23,7 +24,29 @@ export default function RootLayout({
       lang="ru"
       className={`h-full antialiased scroll-smooth ${fontManrope.className}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Script
+          id="calltouch"
+          src="/assets/js/calltouch.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="yandex-metrika"
+          src="/assets/js/yandex-metrika.js"
+          strategy="beforeInteractive"
+        />
+        <noscript>
+          <div>
+            {/* biome-ignore lint/performance/noImgElement: Yandex.Metrika noscript fallback requires a plain tracking pixel. */}
+            <img
+              src="https://mc.yandex.ru/watch/99906066"
+              style={{ position: "absolute", left: "-9999px" }}
+              alt=""
+            />
+          </div>
+        </noscript>
+      </body>
     </html>
   );
 }
