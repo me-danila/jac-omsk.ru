@@ -60,7 +60,7 @@ export function Warranty() {
             сроками и&nbsp;технически исправной техникой.
           </p>
           <Link
-            href="https://drive.google.com/file/d/17SeddM8rSgLE4E_LG2bQDksRYJjzOpsS/view?usp=sharing"
+            href="/assets/price.pdf"
             target="_blank"
             className="text-sm/6 mt-4 w-fit max-xl:underline xl:border-b xl:text-base"
           >
