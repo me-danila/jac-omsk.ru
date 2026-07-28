@@ -4,21 +4,32 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
-export const items = [
-  {
-    id: 1,
-    urlMobile: "/assets/img/banners/mobile/banner1.webp",
-    urlDesktop: "/assets/img/banners/banner1.webp",
-    title: "Весна — время больших возможностей",
-    href: "/#feedback",
-  },
+type BannerItem = {
+  id: number;
+  urlMobile: string;
+  urlDesktop: string;
+  title: string;
+  href: string;
+  external?: boolean;
+};
+
+export const items: BannerItem[] = [
   {
     id: 2,
     urlMobile: "/assets/img/banners/mobile/banner2.webp",
     urlDesktop: "/assets/img/banners/banner2.webp",
     title: "JAС Финанс 3.0",
-    href: "/#feedback",
+    href: "https://jacrus.ru/leasing/",
+    external: true,
   },
+  // Баннер «Весна — время больших возможностей» временно скрыт
+  // {
+  //   id: 1,
+  //   urlMobile: "/assets/img/banners/mobile/banner1.webp",
+  //   urlDesktop: "/assets/img/banners/banner1.webp",
+  //   title: "Весна — время больших возможностей",
+  //   href: "/#feedback",
+  // },
   {
     id: 3,
     urlMobile: "/assets/img/banners/mobile/banner3.webp",
@@ -80,10 +91,12 @@ export function FramerCarousel() {
       <div className="flex flex-col gap-3">
         <div className="relative overflow-hidden" ref={containerRef}>
           <motion.div className="flex" style={{ x }}>
-            {items.map((item) => (
+            {items.map((item, i) => (
               <Link
                 key={item.id}
                 href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 className="shrink-0 w-full relative aspect-4/6 lg:aspect-[2.25/1]"
               >
                 <OptimizedImage
@@ -93,7 +106,7 @@ export function FramerCarousel() {
                   sizes="100vw"
                   className="absolute inset-0 h-full w-full object-cover select-none pointer-events-none lg:hidden"
                   draggable={false}
-                  priority={item.id === 1}
+                  priority={i === 0}
                 />
                 <OptimizedImage
                   src={item.urlDesktop}
@@ -102,7 +115,7 @@ export function FramerCarousel() {
                   sizes="100vw"
                   className="absolute inset-0 hidden h-full w-full object-cover select-none pointer-events-none lg:block"
                   draggable={false}
-                  priority={item.id === 1}
+                  priority={i === 0}
                 />
               </Link>
             ))}

@@ -55,8 +55,8 @@ const models: ModelData[] = [
     id: "n90x",
     label: "N90X",
     title: "N90X",
-    subtitle: "СКОРО В ПРОДАЖЕ",
-    price: "",
+    subtitle: "СИЛА НОВОГО ПОКОЛЕНИЯ",
+    price: "от 5 610 000 ₽",
     features: [
       {
         icon: <EngineIcon />,
@@ -88,7 +88,7 @@ const models: ModelData[] = [
     label: "N200",
     title: "N200",
     subtitle: "ДЛЯ БЕЗГРАНИЧНЫХ ЗАДАЧ",
-    price: "от 7 756 000 ₽",
+    price: "от 9 890 000 ₽",
     features: [
       {
         icon: <EngineIcon />,

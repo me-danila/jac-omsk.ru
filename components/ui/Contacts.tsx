@@ -20,7 +20,7 @@ export function Contacts() {
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
                 </span>
                 <span className="text-sm opacity-60">
-                  Работаем с 8:00 до 18:00
+                  Работаем с 9:00 до 18:00
                 </span>
               </p>
             </div>
